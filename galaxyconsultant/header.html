@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Estate Website</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        
+/* Header Styles */
+header {
+    background-color: #0c0b0b;
+    color: white;
+    padding: 10px 20px;
+    display: flex; /* Flexbox layout for the header */
+    justify-content: space-between; /* Space between logo and nav */
+    align-items: center; /* Vertically center the content */
+    width: 100%;
+    
+}
+
+/* Logo Styling */
+header .logo {
+    flex: 0 0 auto; /* Prevent resizing */
+}
+
+header .logo img {
+    height: 50px;
+}
+
+/* Navigation Styles */
+header nav ul {
+    list-style: none;
+    display: flex; /* Align items in a row */
+    margin: 0;
+    padding: 0;
+    justify-content: flex-end; /* Align the navigation items to the right */
+}
+
+header nav ul li {
+    margin: 0 15px; /* Space between navigation items */
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+  /* Basic Styles */
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        li {
+            position: relative;
+            z-index: 1000;
+        }
+
+        a {
+            text-decoration: none;
+            padding: 10px;
+            display: block;
+            color: #fff;
+            background-color: #030303;
+        }
+        nav ul li a {
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color:  #ff7f50;
+}
+
+
+        /* Dropdown Styles */
+        ul .dropdown {
+            display: none;
+            position: absolute;
+            top: 100%; /* Position below the parent item */
+            left: 0;
+            background-color: #030303;
+            width: 200px;
+            padding: 10px 0;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        ul li:hover .dropdown {
+            display: block; /* Show dropdown when parent is hovered */
+        }
+
+        .dropdown li {
+            padding: 8px 10px;
+        }
+
+        .dropdown li a {
+            color: #fff;
+            padding: 10px;
+            background-color: #030303;
+        }
+
+        .dropdown li a:hover {
+            color:#fff;
+            background-color: #ff7f50;
+        }
+/* Moving Headline Styling */
+.moving-headline {
+    overflow: hidden;
+    width: 100%;
+    background-color: #ff7f50;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+    margin-top: 10px; /* Space between header and moving headline */
+}
+
+.moving-headline p {
+    display: inline-block;
+    white-space: nowrap;
+    animation: moveText 10s linear infinite;
+}
+
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <a href="index.html"><img src="uploads/3.png" alt="Real Estate Logo"></a>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="javascript:void(0)">Projects</a> <!-- Removed 'href' to prevent accidental navigation -->
+                <!-- Dropdown menu -->
+                <ul class="dropdown">
+                    <li><a href="project1.html">Park View</a></li>
+                    <li><a href="project2.html">Blue World City</a></li>
+                    <li><a href="project3.html">Capital Smart City</a></li>
+                    <li><a href="project4.html">Taj Residencia</a></li>
+                    <li><a href="project5.html">Faisal Town</a></li>
+                    <li><a href="project6.html">Kingdom valley</a></li>
+                </ul>
+            </li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="index1.html">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+<div class="moving-headline">
+    <p>Exclusive Properties Available Now! Contact Us Today for the Best Deals!</p>
+</div>
+
+<script>
+    // Get the Properties link and the dropdown
+    const propertiesLink = document.querySelector('li > a[href="javascript:void(0)"]');
+    const dropdownMenu = document.querySelector('.dropdown');
+
+    // Toggle the dropdown on click
+    propertiesLink.addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent default behavior (navigation)
+        dropdownMenu.style.display = (dropdownMenu.style.display === 'block') ? 'none' : 'block';
+    });
+
+    // Close dropdown when clicking outside of the dropdown
+    document.addEventListener('click', function(event) {
+        if (!propertiesLink.contains(event.target) && !dropdownMenu.contains(event.target)) {
+            dropdownMenu.style.display = 'none';
+        }
+    });
+</script>
+
+</body>
+</html>

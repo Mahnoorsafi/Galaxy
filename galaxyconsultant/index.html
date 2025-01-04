@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galaxy Consultants</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <div id="header-placeholder"></div>
+    <style>
+        /* Custom Styles */
+        .projects-section {
+            padding: 60px 0;
+        }
+
+        .project {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s;
+            border-radius: 5px;
+        }
+
+        .project img {
+            width: 100%;
+            transition: transform 0.3s;
+        }
+
+        .project:hover img {
+            transform: scale(1.1);
+        }
+
+        .project .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .project:hover .overlay {
+            opacity: 1;
+        }
+
+        .stats-section {
+            background-color: #f8f9fa;
+            padding: 60px 0;
+        }
+
+        .stat-box {
+            text-align: center;
+            padding: 20px;
+            margin: 10px;
+            background-color: white;
+            border: 1px solid #ff7f50;
+            border-radius: 5px;
+            transition: transform 0.3s;
+        }
+
+        .stat-box:hover {
+            transform: scale(1.05);
+        }
+
+        .stat-box h3 {
+            font-size: 40px;
+            color: #ff7f50;
+            margin: 10px 0;
+        }
+
+        .stat-box p {
+            font-size: 18px;
+            margin: 0;
+        }
+/* Custom Styles */
+.video-box {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .video-box iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .contact-section {
+            background-color: #f8f9fa;
+            padding: 60px 0;
+            animation: fadeInUp 1.2s ease-in-out;
+        }
+
+        .contact-section h2 {
+            animation: bounceIn 1.5s;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounceIn {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-20px);
+            }
+            60% {
+                transform: translateY(-10px);
+            }
+        }
+
+       
+    .carousel-section {
+        margin-top: 20px;
+    }
+
+    .carousel-item img {
+        object-fit: cover; /* Ensures the image covers the whole container */
+        height: 500px; /* Adjust height based on your preference */
+    }
+
+
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <img src="data:image/jpeg;base64,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" alt="Property 1">
+        <h1>Find Your Dream Property</h1>
+        <p>Your dream home is just a click away.</p>
+        <a href="project1.html" class="cta-button">Browse Properties</a>
+    </section>
+    <!-- Property Listings Section -->
+    <section id="properties" class="properties container my-5">
+        <h2 class="text-center">Featured Properties</h2>
+        <div class="row">
+            <div class="col-md-4 col-sm-6 mb-4">
+                <div class="property">
+                    <img src="property1.jpg" alt="Property 1"> <!-- Replace with your image -->
+                    <div class="p-3">
+                        <h3>Luxury Villa</h3>
+                        <p>$500,000</p>
+                        <a href="#" class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 mb-4">
+                <div class="property">
+                    <img src="property2.jpg" alt="Property 2"> <!-- Replace with your image -->
+                    <div class="p-3">
+                        <h3>taj residencia</h3>
+                        <p></p>
+                        <a href="project4.html" class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 mb-4">
+                <div class="property">
+                    <img src="property3.jpg" alt="Property 3"> <!-- Replace with your image -->
+                    <div class="p-3">
+                        <h3>parkview</h3>
+                        <p></p>
+                        <a href="project1.html" class="cta-button">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="carousel" class="carousel-section">
+        <div id="propertyCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="https://wallpaperboat.com/wp-content/uploads/2020/10/23/57974/real-estate-05-920x518.jpg" class="d-block w-100" alt="Property 1">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://wallpaperboat.com/wp-content/uploads/2020/10/23/57974/real-estate-09-920x518.jpg" class="d-block w-100" alt="Property 2">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://wallpaperboat.com/wp-content/uploads/2020/10/23/57974/real-estate-13-920x518.jpg" class="d-block w-100" alt="Property 3">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#propertyCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#propertyCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </section>
+    
+    <!-- Stats Section -->
+    <section class="stats-section text-center">
+        <div class="container">
+            <h2 class="mb-5">Why Choose Us?</h2>
+            <div class="row">
+                <div class="col-md-4 col-sm-6">
+                    <div class="stat-box">
+                        <h3 id="yearsExperience" data-target="10">0</h3>
+                        <p>Years of Experience</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="stat-box">
+                        <h3 id="authScale" data-target="90">0%</h3>
+                        <p>Authorization Scale</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="stat-box">
+                        <h3 id="reliability" data-target="95">0%</h3>
+                        <p>Reliability Score</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <!-- About Us Section -->
+    <section id="about" class="container my-5">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <h2>About Us</h2>
+                <p>Galaxy Consultants has been a trusted name in the real estate industry for over a decade, offering unparalleled services in property consultancy, management, and investments. Our commitment to reliability, transparency, and client satisfaction sets us apart in the competitive landscape of real estate. With a vast portfolio spanning residential, commercial, and industrial properties, we are here to turn your property dreams into reality.</p>
+                <a href="about.html" class="cta-button">Learn More</a>
+            </div>
+            <div class="col-md-6">
+                <div class="video-box">
+                    <iframe src="https://www.youtube.com/embed/your-video-id" title="Showcase Video"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects-section container">
+        <h2 class="text-center mb-5">Our Projects</h2>
+        <div class="row">
+            <div class="col-md-4 col-sm-6 mb-4">
+                <div class="project" onclick="window.location.href='project1.html'">
+                    <img src="uploads/parkview.jpg" alt="Project 1"> <!-- Replace with your image -->
+                    <div class="overlay">
+                        <h3>Park View City</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 mb-4">
+                <div class="project" onclick="window.location.href='project2.html'">
+                    <img src="uploads/blueworldcity.jpg" alt="Project 2"> <!-- Replace with your image -->
+                    <div class="overlay">
+                        <h3>Blue World City</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 mb-4">
+                <div class="project" onclick="window.location.href='project3.html'">
+                    <img src="uploads/capitalsmartcity.jpg" alt="Project 3"> <!-- Replace with your image -->
+                    <div class="overlay">
+                        <h3>Capital Smart city</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 mb-4">
+                <div class="project" onclick="window.location.href='project4.html'">
+                    <img src="uploads/download.jpg" alt="Project 2"> <!-- Replace with your image -->
+                    <div class="overlay">
+                        <h3>Taj Residencia </h3>
+                    </div>
+                </div>
+            </div> <div class="col-md-4 col-sm-6 mb-4">
+                <div class="project" onclick="window.location.href='project5.html'">
+                    <img src="uploads/faisaltown.png" alt="Project 2"> <!-- Replace with your image -->
+                    <div class="overlay">
+                        <h3>Faisal town</h3>
+                    </div>
+                </div>
+            </div> <div class="col-md-4 col-sm-6 mb-4">
+                <div class="project" onclick="window.location.href='project6.html'">
+                    <img src="uploads/kingdomvalley.png" alt="Project 2"> <!-- Replace with your image -->
+                    <div class="overlay">
+                        <h3>kingdon Valleys</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  
+   <!-- Contact Us Section -->
+   <section id="contact" class="contact-section">
+    <div class="container text-center">
+        <h2>Contact Us</h2>
+        <p>If you have any questions, need assistance, or wish to learn more about our services, feel free to reach out to us. Our team is always here to help you.</p>
+        <a href="index1.html" class="cta-button">Get in Touch</a>
+    </div>
+</section>
+    <div id="footer-placeholder"></div>
+
+    <!-- Load Header and Footer -->
+    <script>
+        fetch("header.html")
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("header-placeholder").innerHTML = data;
+            });
+
+        fetch("footer.html")
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("footer-placeholder").innerHTML = data;
+            });
+
+        // Counter Animation for Stats Section
+        const counters = document.querySelectorAll('[data-target]');
+        counters.forEach(counter => {
+            const updateCount = () => {
+                const target = +counter.getAttribute('data-target');
+                const count = +counter.innerText;
+                const increment = target / 200;
+
+                if (count < target) {
+                    counter.innerText = Math.ceil(count + increment);
+                    setTimeout(updateCount, 10);
+                } else {
+                    counter.innerText = target;
+                }
+            };
+            updateCount();
+        });
+    </script>
+
+    <!-- Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Bootstrap JS and Popper.js -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
+</body>
+</html>
