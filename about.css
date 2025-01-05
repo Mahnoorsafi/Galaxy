@@ -1,0 +1,425 @@
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #333;
+  background-color: #f8f8f8;
+}
+
+header {
+  text-align: center;
+  background-color: #8199af;
+  color: #fff;
+  padding: 6rem;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.5rem;
+  color: #EC6D20;
+}
+
+header p {
+  font-size: 1.2rem;
+  margin-top: 0.5rem;
+}
+
+.about-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+.history-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  gap: 10px;
+  /* Adds spacing between text and image */
+}
+
+.history-left {
+  flex: 1;
+  padding: 0 20px;
+  /* Push the text slightly to the right */
+}
+
+.history-left h1 {
+  font-size: 250%;
+  color: #EC6D20;
+}
+
+.history-left p {
+  line-height: 1.8;
+  /* Add space between lines */
+  font-size: 1rem;
+  /* Adjust text size for balance */
+}
+
+.history-right {
+  flex: 1;
+  text-align: center;
+}
+
+.history-right img {
+  width: 100%;
+  /* Full width of the container */
+  height: auto;
+  /* Maintain aspect ratio */
+  max-height: 400px;
+  /* Set a maximum height */
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: auto;
+  /* Center the image */
+  object-fit: cover;
+  /* Ensure image covers its area */
+}
+
+
+/* Testimonial Box Styles */
+.testimonial-box {
+  background-color: #2c3e50;
+  color: #fff;
+  text-align: center;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  margin-bottom: 2rem;
+}
+
+.testimonial-box h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #EC6D20;
+}
+
+.testimonial-box p {
+  font-size: 1.2rem;
+  font-style: italic;
+  margin-bottom: 1.5rem;
+  color: #f0feed;
+}
+
+/* Stats Boxes inside Testimonial */
+.stats-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+/* Stats Box Hover Animation */
+.stat-item {
+  flex: 1;
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 2px solid #EC6D20;
+  transition: all 0.3s ease;
+}
+
+.stat-item:hover {
+  transform: translateY(-10px);
+  background-color: #fff;
+}
+
+.stat-item h3 {
+  font-size: 2rem;
+  color: #EC6D20;
+  margin: 0;
+}
+
+.stat-item p {
+  font-size: 1rem;
+  color: #7f8c8d;
+  margin-top: 0.5rem;
+}
+
+/* Vision and Mission Section */
+.vision-mission-section {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.vision-mission-box {
+  display: flex;
+  background-color: #f1eeed;
+  ;
+  padding: 2rem;
+  border-radius: 12px;
+  border: 2px solid #fb6807;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 1000px;
+  width: 80%;
+  gap: 1rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Vision and Mission Hover Animation */
+.vision:hover,
+.mission:hover {
+  transform: translateY(-10px) scale(1.05); /* Move up and scale */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Enhance shadow effect */
+  background-color: #fff;
+  
+}
+
+/* Active State for Vision and Mission */
+.vision:active,
+.mission:active {
+  background-color: #EC6D20;
+  color: white;
+}
+
+.vision:active .read-more-btn,
+.mission:active .read-more-btn {
+  background-color: #ff7f50;
+  color: white;
+}
+
+.left-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.left-content .vision,
+.left-content .mission {
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 2px solid #EC6D20;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.left-content h2 {
+
+  font-size: 1.5rem;
+  margin-bottom: 0.8rem;
+  color: #EC6D20;
+}
+
+.left-content p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #333;
+}
+
+.right-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.right-image img {
+  max-width: 300%;
+  height: 100%;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.contact-and-color-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px;
+  background-color: #000;
+  color: #fff;
+  border-radius: 15px;
+  width: 100%;
+  /* Full screen width */
+  height: 80%;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+}
+
+/* Our Services Section */
+.our-services-section {
+  background-color: #f7f7f7;
+  padding: 60px 0;
+  text-align: center;
+}
+
+.our-services-section h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+  color: #EC6D20;
+}
+
+.our-services-section p {
+  font-size: 18px;
+  margin-bottom: 40px;
+  color: #555;
+}
+
+.services-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+/* Service Boxes */
+.service {
+  background-color: white;
+  padding: 30px;
+  width: 300px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service img {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 20px;
+}
+
+.service h3 {
+  font-size: 24px;
+  margin-bottom: 15px;
+  color: #EC6D20;
+}
+
+.service p {
+  font-size: 16px;
+  margin-bottom: 20px;
+  color: #777;
+}
+
+/* Service Box Hover Animation */
+.service:hover {
+  transform: translateY(-10px) scale(1.05);
+  /* Move up and scale */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  /* Enhance shadow effect */
+  background-color: #fff;
+}
+
+
+.service:active .read-more-btn {
+  background-color: #ff7f50;
+  color: white;
+}
+
+
+
+/* Hover Effects on Buttons */
+.read-more-btn {
+  padding: 10px 20px;
+  background-color: #ff7f50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.read-more-btn:hover {
+  background-color: #fff;
+  color: #EC6D20;
+}
+
+/* Styling for the extra content */
+.extra-content {
+  background-color: #f7f7f7;
+  padding: 15px;
+  margin-top: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.extra-content p {
+  font-size: 14px;
+  color: #555;
+}
+
+.free-consultancy {
+  flex: 1;
+  text-align: center;
+  padding: 20px;
+}
+
+.free-consultancy h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+
+.call-button {
+  display: block;
+  width: fit-content;
+  margin: 0 auto 20px auto;
+  /* Center the button and add spacing */
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 8px;
+  background-color: #ec6d20;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.whatsapp-button {
+  display: block;
+  width: fit-content;
+  margin: 0 auto;
+  /* Center the button */
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 8px;
+  background-color: #25d366;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.form-section {
+  flex: 1;
+  max-width: 400px;
+  padding: 20px;
+}
+
+#contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+#contact-form input,
+.send-button {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.send-button {
+  background-color: #ec6d20;
+  color: #fff;
+  cursor: pointer;
+}
+
+.send-button:hover {
+  background-color: #63260c;
+}
+
+
+
+/* Footer */
+footer {
+  text-align: center;
+  background-color: #2c3e50;
+  color: #fff;
+  padding: 1rem 0;
+  margin-top: 2rem;
+}

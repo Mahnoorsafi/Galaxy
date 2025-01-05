@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project 2: Modern Apartment</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
+    <div id="header-placeholder"></div>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        
+        /* Container to match the header's width */
+        .container {
+            width: 80%; /* Set the desired width, e.g., 80% of the screen width */
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2em;
+        }
+
+        /* PDF Viewer Styles */
+        #pdf-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px 0;
+        }
+
+        .pdf-page {
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            border-radius: 8px;
+        }
+
+        canvas {
+            border-radius: 8px;
+            max-width: 100%; /* Make canvas responsive */
+        }
+
+        /* Footer styling */
+        #footer-placeholder {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Load Header and Footer -->
+    <div id="header-placeholder"></div>
+    
+    <div class="container"> <!-- Wrapper to control the body width -->
+        <h1>Park View City</h1>
+        <div id="pdf-container"></div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+
+    <script>
+        // Load Header and Footer dynamically
+        fetch("header.html")
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("header-placeholder").innerHTML = data;
+            });
+
+        fetch("footer.html")
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("footer-placeholder").innerHTML = data;
+            });
+
+        // PDF.js setup
+        const url = 'uploads/parkviewcity.pdf';  // Corrected the file path
+        pdfjsLib.getDocument(url).promise.then(function(pdf) {
+            const totalPages = pdf.numPages;
+            
+            // Loop through all pages
+            for (let pageNum = 1; pageNum <= totalPages; pageNum++) {
+                pdf.getPage(pageNum).then(function(page) {
+                    // Create a div element for each page
+                    const pageDiv = document.createElement('div');
+                    pageDiv.classList.add('pdf-page');
+                    
+                    // Set the page content and styles
+                    const scale = 1.5; // Scale for zoom
+                    const viewport = page.getViewport({ scale: scale });
+                    
+                    pageDiv.style.width = viewport.width + 'px';
+                    pageDiv.style.height = viewport.height + 'px';
+                    
+                    // Render page to the div container
+                    const canvas = document.createElement('canvas');
+                    pageDiv.appendChild(canvas);
+                    
+                    const context = canvas.getContext('2d');
+                    canvas.height = viewport.height;
+                    canvas.width = viewport.width;
+                    
+                    // Render the page
+                    page.render({
+                        canvasContext: context,
+                        viewport: viewport
+                    }).promise.then(function() {
+                        // Append the rendered page to the PDF container
+                        document.getElementById('pdf-container').appendChild(pageDiv);
+                    });
+                });
+            }
+        }).catch(function(error) {
+            console.error("Error loading PDF:", error);
+        });
+
+        // Counter Animation for Stats Section
+        const counters = document.querySelectorAll('[data-target]');
+        counters.forEach(counter => {
+            const updateCount = () => {
+                const target = +counter.getAttribute('data-target');
+                const count = +counter.innerText;
+                const increment = target / 200;
+
+                if (count < target) {
+                    counter.innerText = Math.ceil(count + increment);
+                    setTimeout(updateCount, 10);
+                } else {
+                    counter.innerText = target;
+                }
+            };
+            updateCount();
+        });
+    </script>
+
+</body>
+</html>
